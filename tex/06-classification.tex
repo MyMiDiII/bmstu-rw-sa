@@ -14,36 +14,33 @@
 следующим критериям:
 \begin{itemize}
     \item точность;
-    \item критерий 2;
-    \item критерий 3.
+    \item масштабируемость/зависимость от данных;
+    \item сложность реализации.
 \end{itemize}
 ~\\
 ~\\
 
 \noindent
 \captionsetup{format=hang,justification=raggedright,
-              singlelinecheck=off,width=13.5cm}
-\begin{longtable}[c]{|p{5cm}|p{2cm}|p{3cm}|p{3cm}|}
+              singlelinecheck=off,width=14.6cm}
+\begin{longtable}[c]{|p{5cm}|p{4cm}|p{3cm}|p{3cm}|}
 \caption{Сравнение методов анализа тональности\label{tbl:time_mes}}\\ \hline
     \textbf{Метод} & \textbf{Точность}
                    & \textbf{Критерий 2} & \textbf{Критерий 3}\\ \hline
-    На основе правил    &    &    & \\ \hline
-    На основе словарей  &    &    & \\ \hline
+    На основе правил    & 75\%\cite{article4}    &    & \\ \hline
+    На основе словарей  & 67\%\cite{article4}     &    & \\ \hline
     На основе корпусов  &    &    & \\ \hline
     Наивный
     байесовский
-    классификатор       &    &    & \\ \hline
+    классификатор       &75.5\%\cite{article9}80\%-92\%\cite{article4}    &    & \\ \hline
     Логическая
-    регрессия           &    &    & \\ \hline
-    Максимум энтропии   &    &    & \\ \hline
+    регрессия           &93.4\%\cite{article9}    &    & \\ \hline
+    Максимум энтропии   &72.6\%\cite{article9}95\%\cite{article4}    &    & \\ \hline
     k-ближайших соседей &    &    & \\ \hline
     Дерево решений      &    &    & \\ \hline
-    Случайный лес       &    &    & \\ \hline
-    Опорные векторы     &    &    & \\ \hline
-    Сверточная
-    нейронная сеть      &    &    & \\ \hline
-    Рекуррентная
-    нейронная сеть      &    &    & \\ \hline
+    Случайный лес       &88.39\%\cite{article9}    &    & \\ \hline
+    Опорные векторы     &91.15\%\cite{article9}78\%-95\%\cite{article4}  &    & \\ \hline
+    Нейронные сети      &87\%\cite{article9}    &    & \\ \hline
 \end{longtable}
 
 \section{Вывод}

@@ -10,21 +10,38 @@
 
 \section{Сравнение и оценка методов}
 
-Методы анализа тональности естественно-языковых текстов можно оценить по
-следующим критериям:
-\begin{itemize}
-    \item точность;
-    \item масштабируемость/зависимость от данных;
-    \item сложность реализации.
-\end{itemize}
-~\\
-~\\
+Анализ тональности текстов является задачей классификации, для которой
+традиционно используют такие метрики эффективности, как точность
+(precision), полнота (recall) и F-мера. Вычисление данных
+характеристик происходит на основе таблицы сопряженности (таблица
+\ref{tab:01})~\cite{article18}. 
+
+\noindent
+\begin{table}
+\captionsetup{format=hang,justification=raggedright,
+              singlelinecheck=off,width=14.6cm}
+\begin{center}
+\caption{Таблица сопряженности\label{tab:01}}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\multicolumn{2}{|c|}{\multirow{2}{*}{}} & \multicolumn{2}{c|}{Оценка эксперта} \\
+\cline{3-4}
+\multicolumn{2}{|c|}{} & Положительная & Отрицательная \\
+\hline
+\multirow{2}{*}{\parbox[c]{2cm}{\centeringОценка системы}} & Положительная & TP & FP \\
+\cline{2-4}
+                                & Отрицательная & FN & TN \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
 
 \noindent
 \captionsetup{format=hang,justification=raggedright,
               singlelinecheck=off,width=14.6cm}
 \begin{longtable}[c]{|p{5cm}|p{4cm}|p{3cm}|p{3cm}|}
-\caption{Сравнение методов анализа тональности\label{tbl:time_mes}}\\ \hline
+\caption{Сравнение методов анализа тональности\label{tab:02}}\\ \hline
     \textbf{Метод} & \textbf{Точность}
                    & \textbf{Критерий 2} & \textbf{Критерий 3}\\ \hline
     На основе правил    & 75\%\cite{article14}    &    & \\ \hline

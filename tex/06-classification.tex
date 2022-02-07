@@ -14,50 +14,118 @@
 традиционно используют такие метрики эффективности, как точность
 (precision), полнота (recall) и F-мера. Вычисление данных
 характеристик происходит на основе таблицы сопряженности (таблица
-\ref{tab:01})~\cite{article18}. 
+\ref{tab:01}), которая составляется путем сравнения решения системы
+относительно класса текста с решением экспертов, которые
+формируют тестовые данные~\cite{article18}. 
+~\\
 
 \noindent
 \begin{table}
 \captionsetup{format=hang,justification=raggedright,
-              singlelinecheck=off,width=14.6cm}
+              singlelinecheck=off,width=13.8cm}
 \begin{center}
 \caption{Таблица сопряженности\label{tab:01}}
 \begin{tabular}{|c|c|c|c|}
-\hline
-\multicolumn{2}{|c|}{\multirow{2}{*}{}} & \multicolumn{2}{c|}{Оценка эксперта} \\
-\cline{3-4}
-\multicolumn{2}{|c|}{} & Положительная & Отрицательная \\
-\hline
-\multirow{2}{*}{\parbox[c]{2cm}{\centeringОценка системы}} & Положительная & TP & FP \\
-\cline{2-4}
-                                & Отрицательная & FN & TN \\
-\hline
+    \hline
+    \multicolumn{2}{|c|}{\multirow{2}{*}{}} & \multicolumn{2}{c|}{Оценка
+                                                                  эксперта} \\
+    \cline{3-4}
+    \multicolumn{2}{|c|}{} & Положительная & Отрицательная \\
+    \hline
+    \multirow{2}{*}{\parbox[c]{2cm}{\centeringОценка системы}} 
+    & Положительная & TP & FP \\
+    \cline{2-4}
+    & Отрицательная & FN & TN \\
+    \hline
 \end{tabular}
 \end{center}
 \end{table}
 
+В таблице \ref{tab:01} используются следующие обозначения:
+\begin{itemize}
+    \item TP (True Positive) --- количество текстов, которые являются
+        положительными и которые система определила, как положительные;
+    \item FP (False Positive) --- количество текстов, которые являются
+        отрицательными и которые система определила, как положительные;
+    \item TN (True Negative) --- количество текстов, которые являются
+        отрицательными и которые система определила, как отрицательные;
+    \item FN (False Negative) --- количество текстов, которые являются
+        отрицательными и которые система определила, как положительные.
+\end{itemize}
+
+Эти же обозначения используются далее в формулах при определении метрик
+эффективности.
+
+\textit{Точность} --- доля текстов, которые действительно принадлежат данному
+классу, относительно текстов, которые классификатор причислил к данному
+классу (формула \ref{eq:12}).
+
+\begin{equation}\label{eq:12}
+    precision = \frac{TP}{TP + FP}
+\end{equation}
+
+\textit{Полнота} --- доля текстов, причисленных классификатором к
+данному классу, относительно всех текстов, принадлежащий ему в тестовой
+выборке~\ref{eq:13}.
+
+\begin{equation}\label{eq:13}
+    recall = \frac{TP}{TP + FN}
+\end{equation}
+
+\textit{F-мера} --- среднее гармоническое точности и полноты, вычисляющееся
+по формуле~\ref{eq:14}.
+
+\begin{equation}\label{eq:14}
+    F = \frac{2 \cdot precision \cdot recall}{recision + recall},
+\end{equation}
+
+где $F$ --- F-мера.
 
 \noindent
 \captionsetup{format=hang,justification=raggedright,
               singlelinecheck=off,width=14.6cm}
-\begin{longtable}[c]{|p{5cm}|p{4cm}|p{3cm}|p{3cm}|}
-\caption{Сравнение методов анализа тональности\label{tab:02}}\\ \hline
-    \textbf{Метод} & \textbf{Точность}
-                   & \textbf{Критерий 2} & \textbf{Критерий 3}\\ \hline
-    На основе правил    & 75\%\cite{article14}    &    & \\ \hline
-    На основе словарей  & 67\%\cite{article14}     &    & \\ \hline
-    На основе корпусов  &    &    & \\ \hline
+\begin{longtable}[c]{|p{5cm}|p{2cm}|p{2cm}|p{1.6cm}|}
+\caption{Сравнение методов анализа тональности\label{tab:02}}\\
+    \hline
+    \textbf{Метод} & \textbf{Точность} & \textbf{Полнота}
+                   & \textbf{F-мера}\\
+    \hline
+    На основе правил\cite{article10}    & 74.2\%
+                        & 73.6\%   &  73.8\%\\
+    \hline
+    На основе словарей \cite{article21}  & 88.0\%
+                        & 97.6\%    & 88.9\%\\
+    \hline
+    На основе корпусов (check)  & 43.0\%
+                        & 93.0\% & 55.0\%\\
+    \hline
     Наивный
     байесовский
-    классификатор       &75.5\%\cite{article05}80\%-92\%\cite{article14}    &    & \\ \hline
-    Логическая
-    регрессия           &93.4\%\cite{article05}    &    & \\ \hline
-    Максимум энтропии   &72.6\%\cite{article05}95\%\cite{article14}    &    & \\ \hline
-    k-ближайших соседей &    &    & \\ \hline
-    Дерево решений      &    &    & \\ \hline
-    Случайный лес       &88.39\%\cite{article05}    &    & \\ \hline
-    Опорные векторы     &91.15\%\cite{article05}78\%-95\%\cite{article14}  &    & \\ \hline
-    Нейронные сети      &87\%\cite{article05}    &    & \\ \hline
+    классификатор       & 89.0\%
+                        & 86.0\% & 87.0\%\\
+    \hline
+    Логистическая
+    регрессия           & 88.0\%
+                        & 80.0\% & 83.0\%\\
+    \hline
+    Максимум энтропии   & 65.0\%
+                        & 98.0\% & 78.0\%\\
+    \hline
+    k-ближайших соседей & 73.0\%
+                        & 73.0\% & 73.0\%\\
+    \hline
+    Дерево решений      & 87.0\%
+                        & 87.0\% & 87.0\%\\
+    \hline
+    Случайный лес       & 86.0\%
+                        & 93.0\% & 90.0\%\\
+    \hline
+    Опорные векторы     & 93.0\%
+                        & 96.0\% & 94.0\%\\
+    \hline
+    Нейронные сети      & 75.0\%
+                        & 74.0\% & 75.0\%\\
+    \hline
 \end{longtable}
 
 \section{Вывод}
